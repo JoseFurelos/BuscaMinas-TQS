@@ -11,7 +11,7 @@ public class Cell {
 		isMarked = false;
 	}
 	
-	public Cell(int col, int row)
+	public Cell(int row, int col)
 	{
 		this.row = row;
 		this.col = col;
