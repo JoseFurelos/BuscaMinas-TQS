@@ -3,62 +3,63 @@ package Model;
 public class Cell {
 	public Cell()
 	{
-		
+		row = 0;
+		col = 0;
+		surroundingMines = 0;
+		isMine = false;
+		isRevealed = false;
+		isMarked = false;
 	}
 	
 	public Cell(int col, int row)
 	{
-		
-	}
-	
-	public void mark()
-	{
-		
-	}
-	public void reveal()
-	{
-		
+		this.row = row;
+		this.col = col;
+		surroundingMines = 0;
+		isMine = false;
+		isRevealed = false;
+		isMarked = false;
 	}
 	
 	public int getRow()
 	{
-		return 0;
+		return row;
 	}
 	public int getCol()
 	{
-		return 0;
+		return col;
 	}
 	public boolean getIsMine() 
 	{
-		return true;
+		return isMine;
 	}
 	public boolean getIsRevealed()
 	{
-		return true;
+		return isRevealed;
 	}
 	public boolean getIsMarked()
 	{
-		return true;
+		return isMarked;
 	}
 	public int getSurroundingMines()
 	{
-		return -1;
+		return surroundingMines;
 	}
-	public void setIsMine(boolean mine) 
+	public void setIsMine(boolean isMine) 
 	{
-		
+		this.isMine=isMine;
 	}
-	public void setIsRevealed(boolean revealed)
+	public void setIsRevealed(boolean isRevealed)
 	{
-		
+		this.isRevealed = isRevealed;
 	}
-	public void setIsMarked(boolean marked)
+	public void setIsMarked(boolean isMarked)
 	{
-		
+		this.isMarked = isMarked;
 	}
-	public void setSurroundingMines(int mines)
+	public void setSurroundingMines(int surroundingMines)
 	{
-		
+		this.surroundingMines = surroundingMines;
 	}
 	
 	

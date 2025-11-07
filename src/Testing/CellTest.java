@@ -24,20 +24,6 @@ class CellTest {
 		assertEquals(2,c.getRow());
 		assertEquals(3,c.getCol());
 	}
-	
-	@Test
-	void TestMark() {
-		Cell c = new Cell();
-		c.mark();
-		assertTrue(c.getIsMarked());
-	}
-	
-	@Test
-	void TestReveal() {
-		Cell c = new Cell();
-		c.reveal();
-		assertTrue(c.getIsRevealed());
-		
-	}
+
 
 }
