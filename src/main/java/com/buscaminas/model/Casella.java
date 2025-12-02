@@ -12,6 +12,6 @@ public class Casella {
     }
     
     public void destapar() {
-    
+        this.destapada = true;
     }
 }
