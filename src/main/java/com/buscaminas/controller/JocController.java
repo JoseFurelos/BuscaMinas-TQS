@@ -8,10 +8,12 @@ public class JocController {
     private IVista vista;
 
     public JocController(Taulell taulell, IVista vista) {
-        
+    	this.taulell = taulell;
+        this.vista = vista;
     }
 
     public void jugarTorn(int x, int y) {
-        
+    	taulell.getCasella(x, y).destapar();
+    	vista.mostrarTaulell();
     }
 }
