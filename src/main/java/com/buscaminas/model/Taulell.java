@@ -69,7 +69,7 @@ public class Taulell {
 
         casellaActual.destapar();
 
-        if (comptarMinesVeines(x, y) == 0 && !casellaActual.isMina()) {
+        if (comptarMinesVeines(x, y) == 0) {
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
                     destaparCasella(x + i, y + j);

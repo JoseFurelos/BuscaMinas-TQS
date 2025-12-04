@@ -30,6 +30,9 @@ class TaulellTest {
     void testGetCasellaLimits() {
         Taulell taulell = new Taulell(10, generadorMock);
         assertThrows(IndexOutOfBoundsException.class, () -> taulell.getCasella(-1, 0));
+        assertThrows(IndexOutOfBoundsException.class, () -> taulell.getCasella(0, -1));
+        assertThrows(IndexOutOfBoundsException.class, () -> taulell.getCasella(11, 0));
+        assertThrows(IndexOutOfBoundsException.class, () -> taulell.getCasella(0, 11));
     }
 
     @Test
@@ -54,11 +57,12 @@ class TaulellTest {
         
         Taulell t = new Taulell(5, generadorMock);
         assertEquals(2, t.comptarMinesVeines(0, 0), "La casella 0,0 hauria de tenir 2 mines veïnes");
+        assertEquals(1, t.comptarMinesVeines(1, 0), "La casella 1,0 hauria de tenir 1 mina veïna");
         assertEquals(0, t.comptarMinesVeines(4, 4), "La casella 4,4 no hauria de tenir mines");
     }
 
     @Test
-    void testDestaparEnCascada() {
+    void testDestaparCasella() {
         
         lenient().when(generadorMock.hiHaMina(anyInt(), anyInt())).thenReturn(false);
         lenient().when(generadorMock.hiHaMina(3, 3)).thenReturn(true);
