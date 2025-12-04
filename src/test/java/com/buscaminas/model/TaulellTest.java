@@ -46,4 +46,30 @@ class TaulellTest {
 
         verify(generadorMock, times(25)).hiHaMina(anyInt(), anyInt());
     }
+    
+    @Test
+    void testComptarMinesVeines() {
+        lenient().when(generadorMock.hiHaMina(0, 1)).thenReturn(true);
+        lenient().when(generadorMock.hiHaMina(1, 0)).thenReturn(true);
+        
+        Taulell t = new Taulell(5, generadorMock);
+        assertEquals(2, t.comptarMinesVeines(0, 0), "La casella 0,0 hauria de tenir 2 mines veïnes");
+        assertEquals(0, t.comptarMinesVeines(4, 4), "La casella 4,4 no hauria de tenir mines");
+    }
+
+    @Test
+    void testDestaparEnCascada() {
+        
+        lenient().when(generadorMock.hiHaMina(anyInt(), anyInt())).thenReturn(false);
+        lenient().when(generadorMock.hiHaMina(3, 3)).thenReturn(true);
+        
+        Taulell t = new Taulell(5, generadorMock);
+
+        t.destaparCasella(0, 0);
+
+        assertTrue(t.getCasella(0, 0).isDestapada(), "La casella clicada s'ha d'obrir");
+        assertTrue(t.getCasella(0, 1).isDestapada(), "La recursivitat hauria d'obrir la veïna 0,1");
+        assertTrue(t.getCasella(1, 1).isDestapada(), "La recursivitat hauria d'obrir la veïna 1,1");
+        assertFalse(t.getCasella(3, 3).isDestapada(), "La mina no s'hauria de destapar sola");
+    }
 }

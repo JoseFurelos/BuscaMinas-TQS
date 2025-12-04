@@ -33,4 +33,14 @@ public class Taulell {
         }
         return caselles[x][y];
     }
+    
+    public int comptarMinesVeines(x, y) {
+    	
+    }
+    
+    public void destaparCasella(int x, int y) {
+    
+    	
+    	
+    }
 }
