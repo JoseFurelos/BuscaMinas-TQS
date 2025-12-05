@@ -1,19 +1,26 @@
 package com.buscaminas.controller;
 
-import com.buscaminas.model.Taulell;
+import com.buscaminas.model.*;
 import com.buscaminas.view.IVista;
 
 public class JocController {
     private Taulell taulell;
     private IVista vista;
-
-    public JocController(Taulell taulell, IVista vista) {
+    private IGestorRank rank;
+    
+    public JocController(Taulell taulell, IVista vista, IGestorRank rank) {
     	this.taulell = taulell;
         this.vista = vista;
+        this.rank = rank;
     }
 
     public void jugarTorn(int x, int y) {
     	taulell.destaparCasella(x, y);
     	vista.mostrarTaulell();
+    }
+    
+    public void partidaGuanyada(int temps) {
+        //TODO
+        rank.guardarPuntuacio("Jugador", temps);
     }
 }
