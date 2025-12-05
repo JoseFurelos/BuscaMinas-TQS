@@ -22,7 +22,6 @@ class JocControllerTest {
     @Mock
     IVista vistaMock;
     
-    @Mock
     MockGestorRank rankMock = new MockGestorRank();
     JocController controlador = new JocController(taulellMock, vistaMock, rankMock);
 
