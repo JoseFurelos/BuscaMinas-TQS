@@ -27,6 +27,8 @@ public class Taulell {
         return mida;
     }
     
+   
+    
     public Casella getCasella(int x, int y) {
         if (x < 0 || x >= mida || y < 0 || y >= mida) {
             throw new IndexOutOfBoundsException("Coordenades fora del taulell");
