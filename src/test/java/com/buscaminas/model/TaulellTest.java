@@ -17,6 +17,7 @@ class TaulellTest {
 
     @Mock
     IGeneradorMines generadorMock;
+    IGeneradorMines generadorBuit = (x, y) -> false;
 
     @Test
     void testCrearTaulell() {
@@ -45,5 +46,32 @@ class TaulellTest {
         assertFalse(t.getCasella(0, 1).isMina(), "No hauria d'haver mina a 0,1");
 
         verify(generadorMock, times(25)).hiHaMina(anyInt(), anyInt());
+    }
+    
+    @Test
+    void testLoopInicialitzarCaselles() {
+    	//Cas 0 iteracions
+    	int mida = 0;
+    	Taulell taulellZero = new Taulell(mida, generadorBuit);
+    	assertEquals(0, taulellZero.getMida());
+    	//excepcio si accedim a 0,0 ja que el bucle no ha creat res
+    	assertThrows(IndexOutOfBoundsException.class, () -> { taulellZero.getCasella(0, 0); });
+    	
+    	//Cas 1 iteracio
+    	mida = 1;
+    	Taulell taulellUna = new Taulell(mida, generadorBuit);
+    	assertEquals(1, taulellUna.getMida());
+    	//Ara si ha d'existir la Casella 0,0
+    	assertNotNull(taulellUna.getCasella(0, 0));
+    	
+    	
+    	//Cas N iteracions
+    	mida = 3;
+    	Taulell taulellN = new Taulell(mida, generadorBuit);
+    	assertEquals(3, taulellN.getMida());
+    	assertNotNull(taulellN.getCasella(0, 0));
+        assertNotNull(taulellN.getCasella(0, 1));
+        assertNotNull(taulellN.getCasella(1, 1));
+        assertNotNull(taulellN.getCasella(1, 0));
     }
 }
