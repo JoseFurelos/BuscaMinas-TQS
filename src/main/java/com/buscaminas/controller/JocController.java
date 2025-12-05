@@ -13,7 +13,7 @@ public class JocController {
     }
 
     public void jugarTorn(int x, int y) {
-    	taulell.getCasella(x, y).destapar();
+    	taulell.destaparCasella(x, y);
     	vista.mostrarTaulell();
     }
 }

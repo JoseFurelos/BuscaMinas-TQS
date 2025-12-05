@@ -35,4 +35,49 @@ public class Taulell {
         }
         return caselles[x][y];
     }
+    
+    public int comptarMinesVeines(int x,int y) {
+    	int mines = 0;
+
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                int veinaX = x + i;
+                int veinaY = y + j;
+                
+                if (veinaX >= 0 && veinaX < mida && veinaY >= 0 && veinaY < mida) {
+                    if (caselles[veinaX][veinaY].isMina()) {
+                        mines++;
+                    }
+                }
+            }
+        }
+        //si hem contat la casella central i era una mina
+        if (caselles[x][y].isMina()) {
+            mines--;
+        }
+        return mines;
+    }
+    
+    public void destaparCasella(int x, int y) {
+    
+    	//pre-condicions
+    	if (x < 0 || x >= mida || y < 0 || y >= mida) {
+            return;
+        }
+        Casella casellaActual = caselles[x][y];
+        if (casellaActual.isDestapada()) {
+            return;
+        }
+
+        casellaActual.destapar();
+
+        if (comptarMinesVeines(x, y) == 0) {
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    destaparCasella(x + i, y + j);
+                }
+            }
+        }
+    	
+    }
 }
