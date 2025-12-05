@@ -1,5 +1,6 @@
 package com.buscaminas.controller;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -8,8 +9,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.buscaminas.model.Taulell;
+import com.buscaminas.model.*;
 import com.buscaminas.view.IVista;
+
 
 @ExtendWith(MockitoExtension.class)
 class JocControllerTest {
@@ -20,19 +22,29 @@ class JocControllerTest {
     @Mock
     IVista vistaMock;
     
-    JocController controller;
+    @Mock
+    MockGestorRank rankMock = new MockGestorRank();
+    JocController controlador = new JocController(taulellMock, vistaMock, rankMock);
 
     @BeforeEach
     void setUp() {
-        controller = new JocController(taulellMock, vistaMock);
+        controlador = new JocController(taulellMock, vistaMock, rankMock);
     }
 
     @Test
     void testJugarTorn() {
     	
-        controller.jugarTorn(0, 0);
+        controlador.jugarTorn(0, 0);
         
         verify(taulellMock).destaparCasella(0, 0); 
         verify(vistaMock).mostrarTaulell();
+    }
+    
+    @Test
+    public void testEsGuardaPuntuacioEnGuanyar() {
+        controlador.partidaGuanyada(120);
+
+        assertTrue(rankMock.sHaCridatGuardar);
+        assertEquals(120, rankMock.ultimTempsGuardat);
     }
 }
