@@ -83,7 +83,7 @@ class TaulellTest {
         lenient().when(generadorMock.hiHaMina(1, 0)).thenReturn(true);
         
         Taulell t = new Taulell(5, generadorMock);
-        assertEquals(1, t.comptarMinesVeines(0, 1), "La casella 0,1 hauria de tenir 1 mina veïna");
+        assertEquals(1, t.comptarMinesVeines(0, 1), "La casella 0,1 hauria de tenir 1 mina vena");
         assertEquals(2, t.comptarMinesVeines(0, 0), "La casella 0,0 hauria de tenir 2 mines veïnes");
         assertEquals(1, t.comptarMinesVeines(1, 0), "La casella 1,0 hauria de tenir 1 mina veïna");
         assertEquals(0, t.comptarMinesVeines(4, 4), "La casella 4,4 no hauria de tenir mines");
