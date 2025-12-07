@@ -43,14 +43,6 @@
                 <version>3.0.0</version>
             </plugin>
             <plugin>
-            	<configuration>
-    				<excludes>
-        				<exclude>com/buscaminas/Main.class</exclude>
-        				<exclude>com/buscaminas/view/**</exclude>
-    				</excludes>
-				</configuration>
-			</plugin>
-            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.10</version>

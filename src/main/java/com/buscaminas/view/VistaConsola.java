@@ -58,24 +58,12 @@ public class VistaConsola implements IVista {
         System.out.println("Escriu 'F Fila Columna' per posar bandera (ex: F 0 1)");
         System.out.print("> ");
 
-        String linia = scanner.nextLine();
-        
-        int fila = -1;
-        int col = -1;
-
         try {
-            if (scanner.hasNextInt()) {
-                fila = scanner.nextInt();
-                col = scanner.nextInt();
-            } else {
-                scanner.next();
-            }
+            String linia = scanner.nextLine();
+            return linia.trim().split("\\s+");
         } catch (Exception e) {
-            System.out.println("Error llegint teclat.");
-            scanner.nextLine();
+            return new String[]{};
         }
-
-        return linia.trim().split("\\s+");
     }
 	
     @Override

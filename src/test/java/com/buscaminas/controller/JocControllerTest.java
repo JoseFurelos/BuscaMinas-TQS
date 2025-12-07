@@ -89,7 +89,7 @@ class JocControllerTest {
     
     @Test
     public void testEsGuardaPuntuacioEnGuanyar() {
-        controlador.partidaGuanyada(120);
+        controlador.partidaGuanyada("jugador", 120);
 
         assertTrue(rankMock.sHaCridatGuardar);
         assertEquals(120, rankMock.ultimTempsGuardat);

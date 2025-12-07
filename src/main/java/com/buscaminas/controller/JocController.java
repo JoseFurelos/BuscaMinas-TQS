@@ -27,14 +27,13 @@ public class JocController {
 	    
 	    if (taulell.heGuanyat()) {
 	        vista.mostrarGuanyador();
-	        rank.guardarPuntuacio("Jugador", 100);
 	    }
 
 	    vista.mostrarTaulell();	    
 }
     
-    public void partidaGuanyada(int temps) {
-        rank.guardarPuntuacio("Jugador", temps);
+    public void partidaGuanyada(String jugador, int temps) {
+        rank.guardarPuntuacio(jugador, temps);
     }
     public void posarBandera(int x, int y) {
         taulell.toggleBandera(x, y);
