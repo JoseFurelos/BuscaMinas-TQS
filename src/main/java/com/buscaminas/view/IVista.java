@@ -2,7 +2,7 @@ package com.buscaminas.view;
 
 public interface IVista {
     void mostrarTaulell();
-    int[] demanarCoordenades();
+    String[] demanarCoordenades();
     void mostrarGameOver();
     void mostrarGuanyador();
 }

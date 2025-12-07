@@ -94,4 +94,11 @@ class JocControllerTest {
         assertTrue(rankMock.sHaCridatGuardar);
         assertEquals(120, rankMock.ultimTempsGuardat);
     }
+    
+    @Test
+    void testPosarBandera() {
+        controlador.posarBandera(2, 3);
+        verify(taulellMock).toggleBandera(2, 3);
+        verify(vistaMock).mostrarTaulell();
+    }
 }

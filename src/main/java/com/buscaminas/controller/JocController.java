@@ -34,7 +34,10 @@ public class JocController {
 }
     
     public void partidaGuanyada(int temps) {
-        //TODO
         rank.guardarPuntuacio("Jugador", temps);
     }
+    public void posarBandera(int x, int y) {
+        
+    }
+    
 }

@@ -122,4 +122,32 @@ class TaulellTest {
     	
     	assertTrue(t.heGuanyat());
     }
+    
+    
+    @Test
+    void testToggleBandera_PosarITreure() {
+        Taulell t = new Taulell(5, (x, y) -> false);
+        t.toggleBandera(0, 0);
+        assertTrue(t.getCasella(0, 0).isFlag());
+        t.toggleBandera(0, 0);
+        assertFalse(t.getCasella(0, 0).isFlag());
+    }
+
+    @Test
+    void testToggleBandera_NoFuncionaSiEstaOberta() {
+        Taulell t = new Taulell(5, (x, y) -> false);
+        t.getCasella(1, 1).destapar();
+        t.toggleBandera(1, 1);
+        assertFalse(t.getCasella(1, 1).isFlag());
+    }
+
+    @Test
+    void testToggleBandera_ForaDeLimits() {
+        Taulell t = new Taulell(5, (x, y) -> false);
+
+        assertDoesNotThrow(() -> {
+            t.toggleBandera(-1, 0);
+            t.toggleBandera(0, 100);
+        });
+    }
 }

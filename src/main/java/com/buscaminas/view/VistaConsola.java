@@ -53,10 +53,13 @@ public class VistaConsola implements IVista {
         }
     }
     @Override
-    public int[] demanarCoordenades() {
+    public String[] demanarCoordenades() {
         System.out.println("\nIntrodueix coordenades (Fila Columna) separades per espai:");
+        System.out.println("Escriu 'F Fila Columna' per posar bandera (ex: F 0 1)");
         System.out.print("> ");
 
+        String linia = scanner.nextLine();
+        
         int fila = -1;
         int col = -1;
 
@@ -72,7 +75,7 @@ public class VistaConsola implements IVista {
             scanner.nextLine();
         }
 
-        return new int[]{fila, col};
+        return linia.trim().split("\\s+");
     }
 	
     @Override

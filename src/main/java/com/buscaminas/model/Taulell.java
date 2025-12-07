@@ -87,4 +87,8 @@ public class Taulell {
     	}
     	return true;
     }
+    
+    public void toggleBandera(int x, int y) {
+        
+    }
 }
