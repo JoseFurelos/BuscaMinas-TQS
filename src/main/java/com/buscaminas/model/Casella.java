@@ -23,7 +23,7 @@ public class Casella {
     	this.isMina = mina;
     }
     public void setFlag(boolean flag){
-    	this.isFlag = true;
+    	this.isFlag = flag;
     }
     public void destapar() {
         this.destapada = true;
