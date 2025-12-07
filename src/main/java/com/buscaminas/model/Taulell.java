@@ -89,6 +89,12 @@ public class Taulell {
     }
     
     public void toggleBandera(int x, int y) {
+        if (x < 0 || x >= mida || y < 0 || y >= mida) 
+        	return;
         
+        Casella c = caselles[x][y];
+        if (!c.isDestapada()) {
+            c.setFlag(!c.isFlag()); 
+        }
     }
 }

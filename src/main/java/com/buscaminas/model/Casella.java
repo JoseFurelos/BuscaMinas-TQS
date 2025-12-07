@@ -22,6 +22,9 @@ public class Casella {
     public void setMina(boolean mina){
     	this.isMina = mina;
     }
+    public void setFlag(boolean flag){
+    	this.isFlag = true;
+    }
     public void destapar() {
         this.destapada = true;
     }

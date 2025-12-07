@@ -37,7 +37,8 @@ public class JocController {
         rank.guardarPuntuacio("Jugador", temps);
     }
     public void posarBandera(int x, int y) {
-        
+        taulell.toggleBandera(x, y);
+        vista.mostrarTaulell();
     }
     
 }
