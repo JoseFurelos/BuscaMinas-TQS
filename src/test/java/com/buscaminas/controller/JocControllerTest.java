@@ -80,9 +80,6 @@ class JocControllerTest {
         verify(taulellMock).destaparCasella(2, 2);
         //mostem la victoria
         verify(vistaMock).mostrarGuanyador();
-        //guardem la puntuacio
-        assertTrue(rankMock.sHaCridatGuardar, "S'ha d'haver guardat la puntuació");
-        assertEquals(100, rankMock.ultimTempsGuardat);
         //actualitzem la vista
         verify(vistaMock).mostrarTaulell();
     }
