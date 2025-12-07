@@ -80,4 +80,9 @@ public class Taulell {
         }
     	
     }
+    
+    public boolean heGuanyat() {
+    
+    }
+    }
 }

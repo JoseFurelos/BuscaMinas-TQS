@@ -104,4 +104,21 @@ class TaulellTest {
         assertFalse(t.getCasella(3, 3).isDestapada(), "La mina no s'hauria de destapar sola");
 
     }
+    
+    @Test 
+    void testHeGuanyat(){
+    	
+    	//mines nomes a la posicio 0,0
+    	IGeneradorMines generadorMock2 = (x,y) -> (x==0 && y==0)
+    	
+    	Taulell t = new Taulell(2,generadorMock2);
+    	
+    	t.destaparCasella(0,1);
+    	assertFalse(t.heGuanyat());
+    	
+    	t.destaparCasella(1,0);
+    	t.destaparCasella(1,1);
+    	
+    	assertTrue(t.heGuanyat());
+    }
 }
