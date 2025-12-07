@@ -51,10 +51,6 @@ public class Taulell {
                 }
             }
         }
-        //si hem contat la casella central i era una mina
-        if (caselles[x][y].isMina()) {
-            mines--;
-        }
         return mines;
     }
     
@@ -82,7 +78,13 @@ public class Taulell {
     }
     
     public boolean heGuanyat() {
-    
-    }
+    	for(int i = 0; i < mida; i++){
+    		for(int j = 0; j < mida; j++) {
+    			Casella c = caselles[i][j];
+    			if(!c.isMina() && !c.isDestapada())
+    				return false;
+    		}
+    	}
+    	return true;
     }
 }
