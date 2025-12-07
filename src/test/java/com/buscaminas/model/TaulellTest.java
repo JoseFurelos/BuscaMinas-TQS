@@ -83,6 +83,7 @@ class TaulellTest {
         lenient().when(generadorMock.hiHaMina(1, 0)).thenReturn(true);
         
         Taulell t = new Taulell(5, generadorMock);
+        assertEquals(1, t.comptarMinesVeines(0, 1), "La casella 0,1 hauria de tenir 1 mina vena");
         assertEquals(2, t.comptarMinesVeines(0, 0), "La casella 0,0 hauria de tenir 2 mines veïnes");
         assertEquals(1, t.comptarMinesVeines(1, 0), "La casella 1,0 hauria de tenir 1 mina veïna");
         assertEquals(0, t.comptarMinesVeines(4, 4), "La casella 4,4 no hauria de tenir mines");
@@ -103,5 +104,50 @@ class TaulellTest {
         assertTrue(t.getCasella(1, 1).isDestapada(), "La recursivitat hauria d'obrir la veïna 1,1");
         assertFalse(t.getCasella(3, 3).isDestapada(), "La mina no s'hauria de destapar sola");
 
+    }
+    
+    @Test 
+    void testHeGuanyat(){
+    	
+    	//mines nomes a la posicio 0,0
+    	IGeneradorMines generadorMock2 = (x,y) -> (x==0 && y==0);
+    	
+    	Taulell t = new Taulell(2,generadorMock2);
+    	
+    	t.destaparCasella(0,1);
+    	assertFalse(t.heGuanyat());
+    	
+    	t.destaparCasella(1,0);
+    	t.destaparCasella(1,1);
+    	
+    	assertTrue(t.heGuanyat());
+    }
+    
+    
+    @Test
+    void testToggleBandera_PosarITreure() {
+        Taulell t = new Taulell(5, (x, y) -> false);
+        t.toggleBandera(0, 0);
+        assertTrue(t.getCasella(0, 0).isFlag());
+        t.toggleBandera(0, 0);
+        assertFalse(t.getCasella(0, 0).isFlag());
+    }
+
+    @Test
+    void testToggleBandera_NoFuncionaSiEstaOberta() {
+        Taulell t = new Taulell(5, (x, y) -> false);
+        t.getCasella(1, 1).destapar();
+        t.toggleBandera(1, 1);
+        assertFalse(t.getCasella(1, 1).isFlag());
+    }
+
+    @Test
+    void testToggleBandera_ForaDeLimits() {
+        Taulell t = new Taulell(5, (x, y) -> false);
+
+        assertDoesNotThrow(() -> {
+            t.toggleBandera(-1, 0);
+            t.toggleBandera(0, 100);
+        });
     }
 }
