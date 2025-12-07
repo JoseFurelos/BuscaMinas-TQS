@@ -15,9 +15,23 @@ public class JocController {
     }
 
     public void jugarTorn(int x, int y) {
-    	taulell.destaparCasella(x, y);
-    	vista.mostrarTaulell();
-    }
+    	Casella c = taulell.getCasella(x, y);
+
+	    if (c.isMina()) {
+	        taulell.destaparCasella(x, y);
+	        vista.mostrarGameOver();
+	        return;
+	    }
+
+	    taulell.destaparCasella(x, y);
+	    
+	    if (taulell.heGuanyat()) {
+	        vista.mostrarGuanyador();
+	        rank.guardarPuntuacio("Jugador", 100);
+	    }
+
+	    vista.mostrarTaulell();	    
+}
     
     public void partidaGuanyada(int temps) {
         //TODO

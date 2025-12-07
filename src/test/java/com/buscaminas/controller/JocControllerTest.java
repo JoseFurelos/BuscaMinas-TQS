@@ -37,7 +37,6 @@ class JocControllerTest {
     	Casella c = new Casella();
     	c.setMina(true);
     	when(taulellMock.getCasella(0, 0)).thenReturn(c);
-        when(c.isMina()).thenReturn(true);
         
         controlador.jugarTorn(0, 0);
         //destapem la mina
@@ -54,7 +53,6 @@ class JocControllerTest {
     	Casella c = new Casella();
     	c.setMina(false);
     	when(taulellMock.getCasella(1, 1)).thenReturn(c);
-        when(c.isMina()).thenReturn(false);
         when(taulellMock.heGuanyat()).thenReturn(false);
         
         controlador.jugarTorn(1, 1);
@@ -75,7 +73,6 @@ class JocControllerTest {
     	Casella c = new Casella();
     	c.setMina(false);
     	when(taulellMock.getCasella(2, 2)).thenReturn(c);
-        when(c.isMina()).thenReturn(false);
         when(taulellMock.heGuanyat()).thenReturn(true);
         
         controlador.jugarTorn(2, 2);
