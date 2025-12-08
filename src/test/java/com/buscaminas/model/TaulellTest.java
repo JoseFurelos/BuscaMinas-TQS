@@ -148,6 +148,8 @@ class TaulellTest {
         assertDoesNotThrow(() -> {
             t.toggleBandera(-1, 0);
             t.toggleBandera(0, 100);
+            t.toggleBandera(100, 0);
+            t.toggleBandera(0, -1);
         });
     }
 }
