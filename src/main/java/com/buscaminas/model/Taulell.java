@@ -77,17 +77,6 @@ public class Taulell {
     	
     }
     
-    public boolean heGuanyat() {
-    	for(int i = 0; i < mida; i++){
-    		for(int j = 0; j < mida; j++) {
-    			Casella c = caselles[i][j];
-    			if(!c.isMina() && !c.isDestapada())
-    				return false;
-    		}
-    	}
-    	return true;
-    }
-    
     public void toggleBandera(int x, int y) {
         if (x < 0 || x >= mida || y < 0 || y >= mida) 
         	return;
@@ -97,4 +86,15 @@ public class Taulell {
             c.setFlag(!c.isFlag()); 
         }
     }
+
+	public boolean heGuanyat() {
+		for(int i = 0; i < mida; i++){
+    		for(int j = 0; j < mida; j++) {
+    			Casella c = caselles[i][j];
+    			if(!c.isMina() && !c.isDestapada())
+    				return false;
+    		}
+    	}
+    	return true;
+	}
 }

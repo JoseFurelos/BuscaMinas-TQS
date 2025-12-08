@@ -28,6 +28,18 @@ class GestorRankFitxerTest {
     }
 
     @Test
+    void testConstructorPerDefecte() {
+        GestorRankFitxer gestorReal = new GestorRankFitxer();
+        gestorReal.guardarPuntuacio("TestDefault", 100);
+        File fitxerReal = new File("ranking.txt");
+        assertTrue(fitxerReal.exists(), "El constructor per defecte hauria de crear 'ranking.txt'");
+
+        //esborrem el fitxer real
+        if (fitxerReal.exists()) {
+            fitxerReal.delete();
+        }
+    }
+    @Test
     void testGuardarILlegirPuntuacio() {
         // Guardem una puntuació de prova
         gestor.guardarPuntuacio("TestPlayer", 999);
@@ -60,5 +72,25 @@ class GestorRankFitxerTest {
         
         assertNotNull(records);
         assertTrue(records.isEmpty(), "Si no hi ha fitxer, la llista ha de ser buida");
+    }
+    
+    @Test
+    void testErrorGuardantPuntuacio() {
+        GestorRankFitxer gestorFallit = new GestorRankFitxer("src"); 
+
+        assertDoesNotThrow(() -> {
+            gestorFallit.guardarPuntuacio("Jugador", 100);
+        });
+        
+    }
+
+    @Test
+    void testErrorLlegintRanquing() {
+        GestorRankFitxer gestorFallit = new GestorRankFitxer("src"); 
+
+        List<String> resultat = gestorFallit.obtenirTopPuntuacions();
+
+        assertNotNull(resultat);
+        assertTrue(resultat.isEmpty());
     }
 }
